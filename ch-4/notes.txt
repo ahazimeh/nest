@@ -1,0 +1,21 @@
+@Param('id')
+@Query()
+@Headers()
+@Body()
+
+validation: pipes
+1-Tell nest to use global validation
+2-create a class that describes the different properties that the request body should have. Dto
+3-add validation rules to the request
+4-apply the class to the request handler
+1-  app.useGlobalPipes(
+    new ValidationPipe()
+  )
+
+npm i class-validator class-transformer
+@Body() body: CreateMessageDto
+
+but how does type of body is validating out requests
+in the tsconfig
+"emitDecoratorMetadata": true,
+which allow a very small ammount of type information to make it from ts world over to the js world
