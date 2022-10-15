@@ -1,0 +1,7 @@
+nest g service cpu
+
+dependency injection between modules
+to use a service in another module
+-add the service to the exports of its module
+-in the other module add the module to its imports
+-then you can use it in the other service
