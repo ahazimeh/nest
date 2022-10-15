@@ -1,2 +1,8 @@
 sudo npm i -g @nestjs/cli
 nest new messages
+nest generate module messages
+nest generate controller messages/messages --flat
+    messages means messages folder
+    the second messages is the name of the class
+    --flat to not create an extra folder called controllers
+VSCode REST Client Extension
