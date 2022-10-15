@@ -1,0 +1,5 @@
+exceptions we will use frequently:
+NotFoundException, BadRequestException, GatewayTimeoutException, UnauthorizedException, UnprocessableEntityException
+
+Inversion of Control Principle:
+classes should not create instances of its dependencies on its own
