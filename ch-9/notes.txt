@@ -1,0 +1,16 @@
+in the service:
+import { Repository } from 'typeorm';
+import { InjectRepository } from "@nestjs/typeorm"
+constructor(@InjectRepository(User) private repo: Repository<User>) {
+}
+
+for typeorm we first use create then save because we could use validation inside of the entity instead of the dto
+or we can log users that are inserted for example
+@AfterInsert()
+    logInsert() {
+        console.log('Inserted User with id', this.id)
+    }
+if we save an entity instance then all the hooks will be executed
+but if we passed in an object and tried to save it then no hooks will be executed
+
+insert, update, and delete don't call hooks whereas save and delete do
