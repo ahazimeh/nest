@@ -3,3 +3,14 @@ NotFoundException, BadRequestException, GatewayTimeoutException, UnauthorizedExc
 
 Inversion of Control Principle:
 classes should not create instances of its dependencies on its own
+
+dependency injection:
+in the module:
+  providers: [MessagesService, MessagesRepository]
+for the constructors:
+constructor(public messagesService: MessagesService) {
+    // this.messagesService = messagesService;
+}
+
+and for the injectable classes add:
+    @Injectable()
