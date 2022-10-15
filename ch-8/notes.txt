@@ -1,0 +1,15 @@
+npm i @nestjs/typeorm typeorm sqlite3
+
+Creating an Entity
+-create file: user.entity.ts
+-
+    import { TypeOrmModule } from "@nestjs/typeorm"
+    imports: [TypeOrmModule.forFeature([User])],
+-in the appModule add your entity
+
+
+new ValidationPipe({
+      whitelist: true
+    })
+// whitelist will make sure that any property not in the validator will be removed from the json object for security
+    this will help for security reasons like removing flag admin: true that someone could add
