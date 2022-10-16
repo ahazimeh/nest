@@ -14,3 +14,19 @@ if we save an entity instance then all the hooks will be executed
 but if we passed in an object and tried to save it then no hooks will be executed
 
 insert, update, and delete don't call hooks whereas save and delete do
+
+attrs: Partial<User> // it has some or no properties from the user object
+Update User:
+const user = await this.findOne(id);
+        if(!user) {
+            throw new Error('User not found');
+        }
+        Object.assign(user, attrs);
+        return this.repo.save(user)
+
+***throwing notfounndexceptions in the service will flow back to the users controller which
+communicates over http
+nest itself is designed assuming that you handle communication protocols besides http requests
+for example we might have another controller designed to handle websocket traffic or grpc requests
+notfound exceptions are not compatible with any other kind of communication protocols
+the solution is to implement your own exception filters 
