@@ -1,17 +1,23 @@
 Hide Password Property:
 -Solution1:
-in the entity
-import { Exclude } from "class-transformer";
-and exclude the property password
-in the controller
-import { UseInterceptors, ClassSerializerInterceptor } from '@nestjs/common';
-then decorate the dn with:
-@UseInterceptors(ClassSerializerInterceptor)
+    in the entity
+    import { Exclude } from "class-transformer";
+    and exclude the property password
+    in the controller
+    import { UseInterceptors, ClassSerializerInterceptor } from '@nestjs/common';
+    then decorate the dn with:
+    @UseInterceptors(ClassSerializerInterceptor)
 the issue
 -Solution2
 
-interceptors can be applied to individual route handlers, to controllers, or globally
+    interceptors can be applied to individual route handlers, to controllers, or globally
 
-so create a new interceptor and in the controller add such decorater
-@UseInterceptors(SerializeInterceptor)
-where SerializeInterceptor is your interceptor
+    so create a new interceptor and in the controller add such decorater
+    @UseInterceptors(new SerializeInterceptor(UserDto))
+    where SerializeInterceptor is your interceptor
+    // note: you can replace this long line with:
+    @Serialize(UserDto)
+    and add this function in the interceptor
+    export function Serialize(dto: any) {
+        return UseInterceptors(new SerializeInterceptor(dto))
+    }
