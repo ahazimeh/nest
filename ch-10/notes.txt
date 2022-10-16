@@ -9,3 +9,9 @@ then decorate the dn with:
 @UseInterceptors(ClassSerializerInterceptor)
 the issue
 -Solution2
+
+interceptors can be applied to individual route handlers, to controllers, or globally
+
+so create a new interceptor and in the controller add such decorater
+@UseInterceptors(SerializeInterceptor)
+where SerializeInterceptor is your interceptor
