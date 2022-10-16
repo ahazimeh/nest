@@ -1,0 +1,11 @@
+Hide Password Property:
+-Solution1:
+in the entity
+import { Exclude } from "class-transformer";
+and exclude the property password
+in the controller
+import { UseInterceptors, ClassSerializerInterceptor } from '@nestjs/common';
+then decorate the dn with:
+@UseInterceptors(ClassSerializerInterceptor)
+the issue
+-Solution2
