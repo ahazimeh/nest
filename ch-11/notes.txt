@@ -70,3 +70,6 @@ method2:global interceptor
         useClass: CurrentUserInterceptor
     }
     // note that the only downside is that we are fetching this object for places we don't need
+
+    Guard:
+    @UseGuards(AuthGuard)
