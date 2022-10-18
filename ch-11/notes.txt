@@ -57,3 +57,16 @@ setColor(@Param('color') color: string, @Session() session: any) {
 getColor(@Session() session: any) {
     return session.color
 }
+
+how to use interceptor that is making use of dependency injection
+method1:
+    first add the interceptor to the module providers that is being used
+    then go to the controller you want to run the interceptor in
+        @UseInterceptors(CurrentUserInterceptor)
+method2:global interceptor
+    in the module provider that is making use of di
+    {
+        provide: APP_INTERCEPTOR,
+        useClass: CurrentUserInterceptor
+    }
+    // note that the only downside is that we are fetching this object for places we don't need
