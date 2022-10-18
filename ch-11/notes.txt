@@ -73,3 +73,12 @@ method2:global interceptor
 
     Guard:
     @UseGuards(AuthGuard)
+
+
+note:
+return plainToInstance(this.dto, data, {
+    groups:["owner"],
+    excludeExtraneousValues: true
+})
+and then when you want to expose a field you can use:
+@Expose({ groups: ['owner'] })
