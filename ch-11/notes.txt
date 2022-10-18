@@ -41,3 +41,19 @@ async signIn(email: string, password: string) {
     }
     return user;
 }
+
+
+npm i cookie-session @types/cookie-session
+app.use(cookieSession({
+    keys: ['sdgfdghsdgs']
+}))
+
+@Get('/colors/:color')
+setColor(@Param('color') color: string, @Session() session: any) {
+    session.color = color;
+}
+
+@Get('/colors')
+getColor(@Session() session: any) {
+    return session.color
+}
