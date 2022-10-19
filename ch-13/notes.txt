@@ -1,0 +1,3 @@
+for e2e testing:
+"rootDir": "..",
+"^src/(.*)$": "<rootDir>/src/$1"

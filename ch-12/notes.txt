@@ -1,0 +1,6 @@
+"test:watch": "jest --watch --maxWorkers=1",
+
+// so jest can figure out places where import starts from src/
+"moduleNameMapper": {
+    "^src/(.*)$": "<rootDir>/$1"
+}
