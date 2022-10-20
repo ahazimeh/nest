@@ -1,0 +1,24 @@
+npm i @nestjs/config
+
+
+onfigModule.forRoot({
+    isGlobal: true, // so it is going to be imported in every single module
+    envFilePath: `.env.${process.env.NODE_ENV}`
+}),
+TypeOrmModule.forRootAsync({
+    inject: [ConfigService],
+    useFactory: (config: ConfigService) => {
+    return {
+        type: 'sqlite',
+        database: config.get<string>('DB_NAME'),
+        entities: [User, Report],
+        synchronize: true
+        }
+    }
+}),
+
+npm i cross-env
+for linux and mac we can add to the start:dev script NODE_ENV=development
+but we need this package for windows or anything else
+
+if you see an error for e2e tests when working with sqlite then you can use  --maxWorkers=1
