@@ -1,3 +1,29 @@
 for e2e testing:
 "rootDir": "..",
 "^src/(.*)$": "<rootDir>/src/$1"
+
+*the setup of the app should be in the app module and not main.ts so e2e tests work properly
+providers: [
+AppService,
+{
+    provide: APP_PIPE,
+    useValue: new ValidationPipe({
+    whitelist: true
+    })
+}
+]
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(cookieSession({
+      keys: ['sdgfdghsdgs']
+    })).forRoutes('*')
+  }
+}
+or another solution is to apply the middleware and validation pipe in every test file
+
+
+to have a database for test and another 1 for development you can
+use env variable
+check for NODE_ENV ==='test'
+
+but the nest recommended way is:
