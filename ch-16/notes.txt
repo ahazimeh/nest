@@ -1,0 +1,12 @@
+this is the order where nestjs runs things:
+middleware guard interceptor
+
+declare global {
+    namespace Express {
+        interface Request {
+            currentUser?: User
+        }
+    }
+}
+go and find the express library, find the interface called express
+we are going to add 1 more property currentUser
