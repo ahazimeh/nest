@@ -1,0 +1,25 @@
+access environment variables
+constructor(private configService: ConfigService) {}
+this.configService.get('COOKIE_KEY')
+
+// const dbConfig = require('../ormconfig.js');
+// TypeOrmModule.forRoot(dbConfig),
+
+TypeOrmModule.forRootAsync({
+    useClass: TypeOrmConfigService
+}),
+
+add cross-env NODE_ENV=development to the typeorm script
+// "typeorm": "cross-env NODE_ENV=development typeorm-ts-node-esm"
+"typeorm": "cross-env NODE_ENV=development typeorm-ts-node-commonjs -d src/data-source.ts"
+
+npm run typeorm migration:generate src/migrations/initial-schema
+npm run typeorm migration:run
+
+npm i pg // install postgress
+
+await app.listen(process.env.PORT || 3000);
+
+for tsconfig.build.json add to the exclude array:
+"ormconfig.js" and "migrations"
+for herku to not attempt to compite ormconfig.js file or any file inside the migrations directory
